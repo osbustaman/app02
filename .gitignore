@@ -1,3 +1,4 @@
 .vscode/launch.json
 *.pyc
 local.py
+manage.py

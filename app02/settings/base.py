@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y=1p6^2jrvj74sw#ke-nswy)#--8g=r4j(!!s^ufe#9p3(y128'
+SECRET_KEY = config('SECRET_KEY')
 
 # Application definition
 
@@ -39,7 +39,10 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = []
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'applications.inquist',
+    'applications.base'
+]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
