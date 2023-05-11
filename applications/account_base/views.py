@@ -5,9 +5,16 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
+from applications.account_base.forms import LoginForm
+
 # Create your views here.
 
 def login_view(request):
+
+    data = {
+        'form': LoginForm,
+    }
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -16,9 +23,10 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse('base_app:control-panel'))
         else:
-            return render(request, 'base/login.html', {'error': 'Usuario o contraseña incorrectos.'})
+            data['error'] = 'Usuario o contraseña incorrectos.'
+            return render(request, 'base/login.html', data)
     else:
-        return render(request, 'base/login.html')
+        return render(request, 'base/login.html', data)
     
 def logout_view(request):
     logout(request)
