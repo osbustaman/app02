@@ -10,4 +10,4 @@ def controlPanel(request):
     data = {
         'lst_bases': lst_bases,
     }
-    return render(request, 'bases/listado_bases.html', data)
+    return render(request, 'base/base.html', data)

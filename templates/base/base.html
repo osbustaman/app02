@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    panel
+    Hola Mundo
+
+    <br>
+    {% if user.is_authenticated %}
+        <a href="{% url 'account_base:logout' %}">Cerrar sesión</a>
+    {% endif %}
 </body>
 </html>
