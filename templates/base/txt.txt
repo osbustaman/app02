@@ -1,0 +1,42 @@
+{% extends 'bases/base.html' %}
+{% load static_tags %}
+
+{% block nav %}
+{% endblock %}
+
+{% for d in lstTipoDocumentos %}
+{% endfor %}
+
+{% include 'includes/cookie_delete.html' with nombre_cookie='tab' %}
+
+{% url 'bases:editNuevoTipoDocumento' tdl_id %}
+
+{% include 'includes/cookies_js.html' with id_elemento='home-tab' nombre_cookie='tab' valor_cookie='homeTab' %}
+
+
+
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>MENU</h3>
+                <ul class="nav side-menu">
+
+                  <li id="bases" {% if request.session.item == 'bases' %}class="active"{% else %}{% endif %}><a><i class="fa fa-database"></i> Bases <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" {% if request.session.item == 'bases' %}style="display: block;"{% endif %}>
+                      <li {% if request.session.sub_item == 'ver_bases' %}class="current-page"{% endif %}>
+                        <a href="{% url 'bases:listado_bases' %}">Ver bases</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li id="config" {% if request.session.item == 'configuracion_entorno' %}class="active"{% else %}{% endif %}><a><i class="fa fa-cogs"></i> Configuración entornos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" {% if request.session.item == 'configuracion_entorno' %}style="display: block;"{% endif %}>
+                      <li {% if request.session.sub_item == 'documentos_por_defecto' %}class="current-page"{% endif %}>
+                        <a href="{% url 'bases:documentoPorDefecto' %}">Documentos default</a>
+                      </li>
+                    </ul>
+                  </li>
+
+				
+                </ul>
+              </div>
+            </div>
